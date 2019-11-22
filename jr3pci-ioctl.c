@@ -108,10 +108,10 @@ long jr3_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 #ifndef LINUX_20
 	  if (_IOC_DIR(cmd) & _IOC_READ)
-		      err = !access_ok(VERIFY_WRITE, (void *)arg, size);
+		      err = !access_ok((void *)arg, size);
 	  
 	  if (_IOC_DIR(cmd) & _IOC_WRITE)
-	              err =  !access_ok(VERIFY_READ, (void *)arg, size);
+	              err =  !access_ok((void *)arg, size);
 	  
 	  if (err) return -EFAULT;
 #else
